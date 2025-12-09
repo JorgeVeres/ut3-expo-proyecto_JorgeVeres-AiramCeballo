@@ -3,7 +3,11 @@
     "name": "Movie Tracker",
     "slug": "movie-tracker-app",
     "scheme": "movietracker",
-    "platforms": ["ios", "android", "web"],
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
     "plugins": [
       [
         "expo-image-picker",
@@ -11,7 +15,9 @@
           "photosPermission": "La app necesita acceso a tu galería para añadir pósters personalizados.",
           "cameraPermission": "La app necesita acceso a tu cámara para tomar fotos de películas físicas."
         }
-      ]
+      ],
+      "expo-sqlite",
+      "expo-router"
     ]
   }
 }
