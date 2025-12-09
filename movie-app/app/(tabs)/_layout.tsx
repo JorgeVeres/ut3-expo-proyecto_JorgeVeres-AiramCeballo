@@ -1,6 +1,6 @@
 import { Tabs } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
-import { useTheme } from '@/src/hooks/useTheme';
+import { useTheme } from '@src/hooks/useTheme';
 import React from 'react';
 
 export default function TabsLayout() {
