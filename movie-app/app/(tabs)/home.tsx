@@ -9,7 +9,7 @@ import SearchBar from '@/src/components/ui/SearchBar';
 import MovieCard from '@/src/components/movies/MovieCard';
 import EmptyState from '@/src/components/ui/EmptyState';
 import FAB from '@/src/components/ui/FAB';
-import BottomSheet from '@/src/components/ui/BottomSheet';
+import BottomSheet from '@/src/components/ui/BottonSheet';
 import MovieForm from '@/src/components/movies/MovieForm';
 import React from 'react';
 
