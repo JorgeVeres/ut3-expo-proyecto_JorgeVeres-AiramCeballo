@@ -12,17 +12,24 @@ interface MovieCardProps {
 export default function MovieCard({ movie, onPress }: MovieCardProps) {
   const { colors } = useTheme();
 
+  // Determinar la URI del póster
+  const posterUri = movie.customPosterUri || movie.posterPath;
+
   return (
     <TouchableOpacity
       style={[styles.card, { backgroundColor: colors.surface }]}
       onPress={onPress}
       activeOpacity={0.7}
     >
-      {(movie.posterPath || movie.customPosterUri) && (
+      {posterUri ? (
         <Image
-          source={{ uri: movie.customPosterUri || `https://image.tmdb.org/t/p/w200${movie.posterPath}` }}
+          source={{ uri: posterUri }}
           style={styles.poster}
         />
+      ) : (
+        <View style={[styles.posterPlaceholder, { backgroundColor: colors.border }]}>
+          <Ionicons name="film-outline" size={40} color={colors.textSecondary} />
+        </View>
       )}
       
       <View style={styles.content}>
@@ -69,6 +76,12 @@ const styles = StyleSheet.create({
     width: 100,
     height: 150,
     resizeMode: 'cover',
+  },
+  posterPlaceholder: {
+    width: 100,
+    height: 150,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   content: {
     flex: 1,

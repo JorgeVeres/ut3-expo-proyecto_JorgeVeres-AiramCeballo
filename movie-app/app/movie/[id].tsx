@@ -58,7 +58,9 @@ export default function MovieDetailScreen() {
       <ScrollView>
         {(movie.posterPath || movie.customPosterUri) && (
           <Image
-            source={{ uri: movie.customPosterUri || `https://image.tmdb.org/t/p/w500${movie.posterPath}` }}
+            source={{ 
+              uri: movie.customPosterUri || movie.posterPath 
+            }}
             style={styles.poster}
           />
         )}
