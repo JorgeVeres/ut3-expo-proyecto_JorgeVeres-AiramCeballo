@@ -1,5 +1,5 @@
 export const CREATE_MOVIES_TABLE = 
-  CREATE TABLE IF NOT EXISTS movies (
+  `CREATE TABLE IF NOT EXISTS movies (
     id TEXT PRIMARY KEY,
     tmdbId INTEGER,
     title TEXT NOT NULL,
@@ -16,5 +16,5 @@ export const CREATE_MOVIES_TABLE =
     runtime INTEGER,
     createdAt TEXT NOT NULL,
     updatedAt TEXT NOT NULL
-  );
+  );`
 ;
