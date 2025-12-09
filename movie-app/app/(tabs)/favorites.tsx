@@ -1,10 +1,10 @@
 import { View, FlatList, StyleSheet } from 'react-native';
 import { useRouter } from 'expo-router';
 import { useMemo } from 'react';
-import { useTheme } from '@/src/hooks/useTheme';
-import { useMoviesStore } from '@/src/stores/useMoviesStore';
-import MovieCard from '@/src/components/movies/MovieCard';
-import EmptyState from '@/src/components/ui/EmptyState';
+import { useTheme } from '../../src/hooks/useTheme';
+import { useMoviesStore } from '../../src/stores/useMoviesStore';
+import MovieCard from '../../src/components/movies/MovieCard';
+import EmptyState from '../../src/components/ui/EmptyState';
 import React from 'react';
 
 export default function FavoritesScreen() {
@@ -25,7 +25,7 @@ export default function FavoritesScreen() {
         renderItem={({ item }) => (
           <MovieCard
             movie={item}
-            onPress={() => router.push(/movie/${item.id})}
+            onPress={() => router.push(`/movie/${item.id}`)}
           />
         )}
         contentContainerStyle={styles.list}

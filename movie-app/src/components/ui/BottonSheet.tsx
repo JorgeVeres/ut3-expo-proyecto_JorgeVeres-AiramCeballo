@@ -9,7 +9,7 @@ interface BottomSheetProps {
   children: React.ReactNode;
 }
 
-export default function ButomSheet({ visible, onClose, children }: BottomSheetProps) {
+export default function BottomSheet({ visible, onClose, children }: BottomSheetProps) {
   const { colors } = useTheme();
 
   return (
