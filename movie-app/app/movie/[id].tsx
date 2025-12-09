@@ -49,6 +49,10 @@ export default function MovieDetailScreen() {
     await toggleFavorite(movie.id);
   };
 
+  // Validar si tiene póster válido
+  const posterUri = movie.customPosterUri || movie.posterPath;
+  const hasValidPoster = posterUri && posterUri !== 'N/A' && posterUri.length > 0;
+
   return (
     <View style={[styles.container, { backgroundColor: colors.background }]}>
       <TouchableOpacity style={styles.closeButton} onPress={() => router.back()}>
@@ -56,13 +60,19 @@ export default function MovieDetailScreen() {
       </TouchableOpacity>
 
       <ScrollView>
-        {(movie.posterPath || movie.customPosterUri) && (
+        {hasValidPoster ? (
           <Image
-            source={{ 
-              uri: movie.customPosterUri || movie.posterPath 
-            }}
+            source={{ uri: posterUri }}
             style={styles.poster}
+            resizeMode="cover"
           />
+        ) : (
+          <View style={[styles.posterPlaceholder, { backgroundColor: colors.border }]}>
+            <Ionicons name="film-outline" size={80} color={colors.textSecondary} />
+            <Text style={[styles.noImageText, { color: colors.textSecondary }]}>
+              Sin póster
+            </Text>
+          </View>
         )}
 
         <View style={styles.content}>
@@ -145,7 +155,17 @@ const styles = StyleSheet.create({
   poster: {
     width: '100%',
     height: 500,
-    resizeMode: 'cover',
+  },
+  posterPlaceholder: {
+    width: '100%',
+    height: 400,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  noImageText: {
+    fontSize: 16,
+    fontWeight: '600',
+    marginTop: 12,
   },
   content: {
     padding: 20,
@@ -201,7 +221,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     padding: 20,
-    gap: 20,
   },
   errorText: {
     fontSize: 18,

@@ -14,6 +14,8 @@ export default function MovieCard({ movie, onPress }: MovieCardProps) {
 
   // Determinar la URI del póster
   const posterUri = movie.customPosterUri || movie.posterPath;
+  // Validar que la URI no sea "N/A" de OMDb
+  const hasValidPoster = posterUri && posterUri !== 'N/A' && posterUri.length > 0;
 
   return (
     <TouchableOpacity
@@ -21,10 +23,11 @@ export default function MovieCard({ movie, onPress }: MovieCardProps) {
       onPress={onPress}
       activeOpacity={0.7}
     >
-      {posterUri ? (
+      {hasValidPoster ? (
         <Image
           source={{ uri: posterUri }}
           style={styles.poster}
+          resizeMode="cover"
         />
       ) : (
         <View style={[styles.posterPlaceholder, { backgroundColor: colors.border }]}>
@@ -82,6 +85,7 @@ const styles = StyleSheet.create({
     height: 150,
     justifyContent: 'center',
     alignItems: 'center',
+    borderRadius: 8,
   },
   content: {
     flex: 1,
