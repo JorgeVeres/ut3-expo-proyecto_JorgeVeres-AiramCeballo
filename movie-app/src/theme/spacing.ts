@@ -8,9 +8,7 @@ export const spacing = {
   xxxl: 64,
 } as const;
 
-/
- 
-Radios de bordes*/
+
 export const borderRadius = {
   sm: 4,
   md: 8,
@@ -19,9 +17,8 @@ export const borderRadius = {
   full: 9999,
 } as const;
 
-/
  
-Tamaños de iconos*/
+
 export const iconSizes = {
   xs: 16,
   sm: 20,
